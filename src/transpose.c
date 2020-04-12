@@ -46,7 +46,7 @@ void usage(int status)
     } else {
         printf(
             "Usage: %s [FILE]\n\
-Display text vertically, for example create a vertical histogram from an "
+Display text vertically, for example create a vertical histogram from an"
 "horizontal input.\n\n\
 Without FILE, read standard input.\n\n\
   -h, --help     Show help and exit\n\
