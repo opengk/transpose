@@ -21,10 +21,15 @@ However, the aim is to output small texts in a terminal window and therefore con
 The file can be compiled with gcc on linux by running the following command:
 
 ```
-gcc -Wall src/transpose.c -o transpose
+make
 ```
 
 Then you can use ./transpose [FILE] to run the program. It can of course be moved to /usr/local/bin  for example or any other path to simply use 'transpose' without './' as a prefix.
+
+To clean the folder you can run
+```
+make clean
+```
 
 ### Use
 
