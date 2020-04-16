@@ -1,12 +1,8 @@
-# Git
-.gitignore
-
 # Compiled
-transpose
-.ycm_extra_conf.py
+src/transpose
 
-# Prerequisites
-*.d
+# Syntax
+.ycm_extra_conf.py
 
 # Object files
 *.o
@@ -14,20 +10,9 @@ transpose
 *.obj
 *.elf
 
-# Linker output
-*.ilk
-*.map
-*.exp
-
-# Precompiled Headers
-*.gch
-*.pch
-
 # Libraries
 *.lib
 *.a
-*.la
-*.lo
 
 # Shared objects (inc. Windows DLLs)
 *.dll
@@ -43,17 +28,29 @@ transpose
 *.x86_64
 *.hex
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
+# Autotools
+/autom4te.cache/
+/build*/
+/m4/
+/src/.deps
+/src/Makefile
+/aclocal.m4
+/ar-lib
+/compile
+/config.guess
+/config.log
+/config.status
+/config.sub
+/configure
+/depcomp
+/install-sh
+/ltmain.sh
+/missing
+/test-driver
+Makefile
+Makefile.in
+config.h.in
+*~
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+# Compressed
+*.tar.gz
