@@ -27,4 +27,4 @@ clean:
 	rm -rf $(OBJ)
 
 mrproper: clean
-	rm -rf $(EXEC)
+	rm -rf $(TARGET)

@@ -32,6 +32,10 @@ To clean the folder you can run
 ```
 make clean
 ```
+or
+```
+make mrproper
+```
 
 ### Use
 
