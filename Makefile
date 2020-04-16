@@ -3,6 +3,7 @@ CFLAGS+=-W -Wall -O3
 LDFLAGS+=
 
 TARGET=transpose
+PREFIX=/usr/local
 
 SRC=$(wildcard src/*.c)
 OBJ=$(SRC:.c=.o)
@@ -14,6 +15,13 @@ transpose: $(OBJ)
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS)
+
+.PHONY: install clean mrproper
+
+install:
+	@echo installing executable file to ${PREFIX}/bin
+	@mkdir -p ${PREFIX}/bin
+	install -Dm755 $(TARGET) $(DESTDIR)$(PREFIX)/bin/$(TARGET)
 
 clean:
 	rm -rf $(OBJ)
