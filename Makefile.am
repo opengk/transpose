@@ -2,7 +2,8 @@
 
 # Automake requirements
 ACLOCAL_AMFLAGS = -I m4
-EXTRA_DIST = README.md
 
 PACKAGE = transpose
+
 SUBDIRS = src
+dist_doc_DATA = README.md
