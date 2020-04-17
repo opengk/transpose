@@ -44,7 +44,6 @@ src/transpose
 /test-driver
 Makefile
 config.h.in
-*~
 
 # Compressed
 *.tar.gz
