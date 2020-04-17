@@ -42,12 +42,10 @@ src/transpose
 /config.status
 /config.sub
 /depcomp
-/install-sh
 /ltmain.sh
 /missing
 /test-driver
 Makefile
-Makefile.in
 config.h.in
 *~
 
