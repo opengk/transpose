@@ -36,14 +36,11 @@ src/transpose
 /src/Makefile
 /aclocal.m4
 /ar-lib
-/compile
 /config.guess
 /config.log
 /config.status
 /config.sub
-/depcomp
 /ltmain.sh
-/missing
 /test-driver
 Makefile
 config.h.in
