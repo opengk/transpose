@@ -1,4 +1,4 @@
-# Transpose
+# verticalize
 
 As a first git deposit, I wrote this little program capable of transforming any terminal output vertically, i.e. the horizontal text is translated vertically.
 
@@ -26,7 +26,7 @@ make
 sudo make install
 ```
 
-Then you can use transpose [FILE] to run the program. It's installed by default to /usr/local/bin.
+Then you can use verticalize [FILE] to run the program. It's installed by default to /usr/local/bin.
 
 To clean the folder you can run
 ```
@@ -42,17 +42,17 @@ make mrproper
 Syntax is the following:
 
 ```
-transpose [FILE]
+verticalize [FILE]
 ```
 
-You can also pipe into transpose like:
+You can also pipe into verticalize like:
 ```
-cat [FILE] | transpose
+cat [FILE] | verticalize
 ```
 
 Or simply run the following to enter some text and end with Enter and EOF signal (CTRL-D):
 ```
-transpose
+verticalize
 ```
 
 ## Author
