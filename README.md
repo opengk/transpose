@@ -26,15 +26,9 @@ make
 sudo make install
 ```
 
-Then you can use verticalize [FILE] to run the program. It's installed by default to /usr/local/bin.
-
-To clean the folder you can run
+For cleaning things do a simple:
 ```
 make clean
-```
-or
-```
-make mrproper
 ```
 
 ### Use
