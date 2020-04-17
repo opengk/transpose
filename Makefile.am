@@ -3,7 +3,7 @@
 # Automake requirements
 ACLOCAL_AMFLAGS = -I m4
 
-PACKAGE = transpose
+PACKAGE = verticalize
 
 SUBDIRS = src
 dist_doc_DATA = README.md

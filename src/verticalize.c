@@ -1,4 +1,4 @@
-/*  transpose: outputs horizontal table vertically
+/*  verticalize: outputs horizontal table vertically
     Copyright (C) 2018  Guillaume Koehl <opengk@free.fr>
 
     This program is free software: you can redistribute it and/or modify
@@ -29,7 +29,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#define PROG_NAME "transpose"
+#define PROG_NAME "verticalize"
 #define BUFSIZE 8192
 #define STREQ(a, b) (*(a) == *(b) && strcmp((a), (b)) == 0)
 
@@ -81,7 +81,7 @@ int count_longest_line(char *input)
     return max_char;
 }
 
-void transpose(const char *file)
+void verticalize(const char *file)
 {
     /* Open Stdin or a File */
     int fd;
@@ -142,7 +142,7 @@ void transpose(const char *file)
         }
     }
 
-    /* Transpose the table */
+    /* verticalize the table */
     for (int j = max_char - 2; j >= 0; --j) {
         for (int i = 0; i < lines; ++i) {
             if (text[i][j] != 0)
@@ -166,7 +166,7 @@ int main(int argc, char *argv[])
 
             case 'v': /* version */
                 printf(
-                    "transpose  Copyright (C) 2018  Guillaume Koehl\n\
+                    "verticalize  Copyright (C) 2018  Guillaume Koehl\n\
 GNU General Public License v3 (GPL-3). This program comes with ABSOLUTELY NO "
 "WARRANTY.\n\
 This is free software, and you are welcome to redistribute it under certain "
@@ -179,12 +179,12 @@ This is free software, and you are welcome to redistribute it under certain "
         }
     }
 
-    /* Get source and transpose */
+    /* Get source and verticalize */
     int files = argc - optind;
     if (files == 0)
-        transpose("stdin");
+        verticalize("stdin");
     else if (files == 1)
-        transpose(argv[1]);
+        verticalize(argv[1]);
     else
         usage(EXIT_SUCCESS);
 
