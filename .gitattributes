@@ -2,4 +2,5 @@
 *.in linguist-detectable=false
 *.am linguist-detectable=false
 *.ac linguist-detectable=false
+* linguist-detectable=false
 *.c linguist-detectable=true
