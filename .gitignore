@@ -1,5 +1,5 @@
 # Compiled
-src/verticalize
+verticalize
 
 # Syntax
 .ycm_extra_conf.py
@@ -27,23 +27,6 @@ src/verticalize
 *.i*86
 *.x86_64
 *.hex
-
-# Autotools
-/autom4te.cache/
-/build*/
-/m4/
-/src/.deps
-/src/Makefile
-/aclocal.m4
-/ar-lib
-/config.guess
-/config.log
-/config.status
-/config.sub
-/ltmain.sh
-/test-driver
-Makefile
-config.h.in
 
 # Compressed
 *.tar.gz

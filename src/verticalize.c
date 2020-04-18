@@ -23,6 +23,7 @@
 
 #include <fcntl.h>
 #include <getopt.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -34,6 +35,7 @@
 #define STREQ(a, b) (*(a) == *(b) && strcmp((a), (b)) == 0)
 
 static struct option const longopts[] = {
+    {"bottom-start", no_argument, NULL, 'b'},
     {"help", no_argument, NULL, 'h'},
     {"version", no_argument, NULL, 'v'},
 };
@@ -49,8 +51,9 @@ void usage(int status)
 Display text vertically, for example create a vertical histogram from an"
 "horizontal input.\n\n\
 Without FILE, read standard input.\n\n\
-  -h, --help     Show help and exit\n\
-  -v, --version  Show version\n",
+  -b, --bottom-start Verticalize starting from bottom\n\
+  -h, --help         Show help and exit\n\
+  -v, --version      Show version\n",
             PROG_NAME);
     }
     exit(status);
@@ -81,7 +84,7 @@ int count_longest_line(char *input)
     return max_char;
 }
 
-void verticalize(const char *file)
+void verticalize(const char *file, bool bottom_start)
 {
     /* Open Stdin or a File */
     int fd;
@@ -126,15 +129,15 @@ void verticalize(const char *file)
     int text[1000][2048];
     for (int i = 0; i < lines; ++i)
         for (int j = 0; j < max_char; ++j)
-            text[i][j] = 0;
+            text[i][j] = 0; /* initialize table */
 
     int curr_char = 0, curr_line = 0;
-    for (size_t i = 0; i < strlen(input); ++i) {
+    for (size_t i = 0; i < strlen(input); ++i) { /* fill table */
         if (input[i] == '\n') {
             curr_char = 0;
             curr_line++;
         } else {
-            if (input[i] == '\t') /* tab is converted to space character */
+            if (input[i] == '\t') /* tab converted to space character */
                 text[curr_line][curr_char] = ' ';
             else
                 text[curr_line][curr_char] = input[i];
@@ -142,28 +145,47 @@ void verticalize(const char *file)
         }
     }
 
-    /* verticalize the table */
-    for (int j = max_char - 2; j >= 0; --j) {
-        for (int i = 0; i < lines; ++i) {
-            if (text[i][j] != 0)
-                printf("%c ", text[i][j]);
-            else
-                printf("  ");
+    /* Verticalize */
+    if (bottom_start == false) {
+        /* Verticalize from top */
+        for (int j = 0; j <= max_char - 2; ++j) {
+            for (int i = 0; i < lines; ++i) {
+                if (text[i][j] != 0)
+                    printf("%c ", text[i][j]);
+                else
+                    printf("  ");
+            }
+            printf("\n");
         }
-        printf("\n");
+    } else {
+        /* Verticalize from bottom */
+        for (int j = max_char - 2; j >= 0; --j) {
+            for (int i = 0; i < lines; ++i) {
+                if (text[i][j] != 0)
+                    printf("%c ", text[i][j]);
+                else
+                    printf("  ");
+            }
+            printf("\n");
+        }
     }
 }
 
 int main(int argc, char *argv[])
 {
+    /* Varibales set depending on options */
+    bool bottom_start = false;
+
     /* Parameters with getopts */
     int c;
-    while ((c = getopt_long(argc, argv, "hv", longopts, NULL)) != -1) {
+    while ((c = getopt_long(argc, argv, "bhv", longopts, NULL)) != -1) {
         switch (c) {
+            case 'b': /* verticalize from bottom */
+                bottom_start = true;
+                break;
             case 'h': /* help */
                 usage(EXIT_SUCCESS);
                 break;
-
             case 'v': /* version */
                 printf(
                     "verticalize  Copyright (C) 2018  Guillaume Koehl\n\
@@ -182,9 +204,9 @@ This is free software, and you are welcome to redistribute it under certain "
     /* Get source and verticalize */
     int files = argc - optind;
     if (files == 0)
-        verticalize("stdin");
+        verticalize("stdin", bottom_start);
     else if (files == 1)
-        verticalize(argv[1]);
+        verticalize(argv[1], bottom_start);
     else
         usage(EXIT_SUCCESS);
 
