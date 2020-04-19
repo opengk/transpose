@@ -1,6 +1,6 @@
 # verticalize
 
-As a first git deposit, I wrote this little program capable of transforming any terminal output vertically, i.e. the horizontal text is translated vertically.
+Program capable of transforming any terminal output vertically, i.e. the horizontal text is translated vertically.
 
 ### Prerequisites
 
@@ -18,10 +18,9 @@ However, the aim is to output small texts in a terminal window and therefore con
 
 ### Installing
 
-The file can be compiled with gcc on linux by running the following commands:
+Compile on linux by running:
 
 ```
-./configure
 make
 sudo make install
 ```
@@ -48,6 +47,14 @@ Or simply run the following to enter some text and end with Enter and EOF signal
 ```
 verticalize
 ```
+
+Vertical text starts by default from top. To start from bottom use option -b (--bottom-start) as:
+```
+verticalize -b
+```
+
+NOTE 1: tabs are converted to 1 space
+NOTE 2: some special characters might show wrongly for now
 
 ## Author
 

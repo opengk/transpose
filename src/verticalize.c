@@ -173,7 +173,7 @@ void verticalize(const char *file, bool bottom_start)
 
 int main(int argc, char *argv[])
 {
-    /* Varibales set depending on options */
+    /* Variables set depending on options */
     bool bottom_start = false;
 
     /* Parameters with getopts */
