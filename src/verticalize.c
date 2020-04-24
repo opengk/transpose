@@ -30,6 +30,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#define PROG_VERSION "0.1"
 #define PROG_NAME "verticalize"
 #define BUFSIZE 8192
 #define STREQ(a, b) (*(a) == *(b) && strcmp((a), (b)) == 0)
@@ -188,12 +189,12 @@ int main(int argc, char *argv[])
                 usage(EXIT_SUCCESS);
                 break;
             case 'v': /* version */
-                printf(
-                    "verticalize  Copyright (C) 2018  Guillaume Koehl\n\
+                printf("verticalize %s\n\
+Copyright (C) 2018  Guillaume Koehl\n\
 GNU General Public License v3 (GPL-3). This program comes with ABSOLUTELY NO "
 "WARRANTY.\n\
 This is free software, and you are welcome to redistribute it under certain "
-"conditions.\n");
+"conditions.\n", PROG_VERSION);
                 exit(EXIT_SUCCESS);
                 break;
             
