@@ -30,7 +30,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#define PROG_VERSION "0.1"
+#define PROG_VERSION "1.0.0"
 #define PROG_NAME "verticalize"
 #define BUFSIZE 8192
 #define STREQ(a, b) (*(a) == *(b) && strcmp((a), (b)) == 0)
