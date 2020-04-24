@@ -34,12 +34,6 @@
 #define BUFSIZE 8192
 #define STREQ(a, b) (*(a) == *(b) && strcmp((a), (b)) == 0)
 
-static struct option const longopts[] = {
-    {"bottom-start", no_argument, NULL, 'b'},
-    {"help", no_argument, NULL, 'h'},
-    {"version", no_argument, NULL, 'v'},
-};
-
 void usage(int status)
 {
     if (status != EXIT_SUCCESS) {
@@ -176,6 +170,13 @@ int main(int argc, char *argv[])
     /* Variables set depending on options */
     bool bottom_start = false;
 
+    static struct option const longopts[] = {
+        {"bottom", no_argument, NULL, 'b'},
+        {"help", no_argument, NULL, 'h'},
+        {"version", no_argument, NULL, 'v'},
+        {NULL, 0, NULL, 0}
+    };
+
     /* Parameters with getopts */
     int c;
     while ((c = getopt_long(argc, argv, "bhv", longopts, NULL)) != -1) {
@@ -195,7 +196,7 @@ This is free software, and you are welcome to redistribute it under certain "
 "conditions.\n");
                 exit(EXIT_SUCCESS);
                 break;
-
+            
             default: /* usage */
                 usage(EXIT_FAILURE);
         }
@@ -203,10 +204,11 @@ This is free software, and you are welcome to redistribute it under certain "
 
     /* Get source and verticalize */
     int files = argc - optind;
+    printf("argc %d\toptind %d", argc, optind);
     if (files == 0)
         verticalize("stdin", bottom_start);
     else if (files == 1)
-        verticalize(argv[1], bottom_start);
+        verticalize(argv[optind], bottom_start);
     else
         usage(EXIT_SUCCESS);
 
