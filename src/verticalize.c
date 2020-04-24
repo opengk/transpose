@@ -204,7 +204,6 @@ This is free software, and you are welcome to redistribute it under certain "
 
     /* Get source and verticalize */
     int files = argc - optind;
-    printf("argc %d\toptind %d", argc, optind);
     if (files == 0)
         verticalize("stdin", bottom_start);
     else if (files == 1)
