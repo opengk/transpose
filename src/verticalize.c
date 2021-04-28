@@ -19,7 +19,7 @@
 /* Thanks a lot to the K&R Learning C book which
  * almost explicits all the code  and to the GNU
  * coreutils source code which is a great source
- * of inspiration for coding in the linux system*/
+ * of inspiration for coding in the linux system */
 
 #include <fcntl.h>
 #include <getopt.h>
